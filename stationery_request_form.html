@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corporate Stationery Request Portal</title>
+    <style>
+        :root {
+            --primary-color: #003366;
+            --secondary-color: #0066cc;
+            --accent-color: #e6f0ff;
+            --text-color: #333333;
+            --border-color: #cccccc;
+            --success-color: #28a745;
+            --error-color: #dc3545;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px 0;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .company-logo {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.05);
+        }
+
+        .form-title {
+            color: var(--primary-color);
+            font-size: 24px;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--accent-color);
+        }
+
+        .form-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+        }
+
+        .section-title {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-color);
+            font-weight: 500;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="number"],
+        input[type="date"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 5px rgba(0,102,204,0.2);
+            outline: none;
+        }
+
+        .items-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .item-card {
+            border: 1px solid var(--border-color);
+            padding: 15px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .item-card input[type="number"] {
+            width: 80px;
+        }
+
+        .buttons-container {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            color: white;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        .required {
+            color: var(--error-color);
+            margin-left: 4px;
+        }
+
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <div class="company-logo">CORPORATE NAME</div>
+            <div>Stationery Request Portal</div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1 class="form-title">Stationery Request Form</h1>
+        <form id="corporateStationeryForm">
+            <!-- Requester Information Section -->
+            <div class="form-section">
+                <h2 class="section-title">Requester Information</h2>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Employee ID<span class="required">*</span></label>
+                        <input type="text" name="employeeId" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Full Name<span class="required">*</span></label>
+                        <input type="text" name="fullName" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email<span class="required">*</span></label>
+                        <input type="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Contact Extension</label>
+                        <input type="text" name="extension">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Department Information -->
+            <div class="form-section">
+                <h2 class="section-title">Department Information</h2>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Department<span class="required">*</span></label>
+                        <select name="department" required>
+                            <option value="">Select Department</option>
+                            <option value="executive">Executive Office</option>
+                            <option value="finance">Finance & Accounting</option>
+                            <option value="hr">Human Resources</option>
+                            <option value="it">Information Technology</option>
+                            <option value="legal">Legal</option>
+                            <option value="marketing">Marketing & Communications</option>
+                            <option value="operations">Operations</option>
+                            <option value="sales">Sales</option>
+                            <option value="rd">Research & Development</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Cost Center<span class="required">*</span></label>
+                        <input type="text" name="costCenter" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Manager's Name<span class="required">*</span></label>
+                        <input type="text" name="managerName" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Building/Floor</label>
+                        <input type="text" name="location">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Request Details -->
+            <div class="form-section">
+                <h2 class="section-title">Request Details</h2>
+                <div class="items-grid">
+                    <div class="item-card">
+                        <input type="checkbox" name="items" id="pens">
+                        <label for="pens">Pens</label>
+                        <input type="number" min="0" placeholder="Qty">
+                    </div>
+                    <div class="item-card">
+                        <input type="checkbox" name="items" id="pencils">
+                        <label for="pencils">Pencils</label>
+                        <input type="number" min="0" placeholder="Qty">
+                    </div>
+                    <div class="item-card">
+                        <input type="checkbox" name="items" id="notebooks">
+                        <label for="notebooks">Notebooks</label>
+                        <input type="number" min="0" placeholder="Qty">
+                    </div>
+                    <div class="item-card">
+                        <input type="checkbox" name="items" id="folders">
+                        <label for="folders">File Folders</label>
+                        <input type="number" min="0" placeholder="Qty">
+                    </div>
+                    <div class="item-card">
+                        <input type="checkbox" name="items" id="staplers">
+                        <label for="staplers">Staplers</label>
+                        <input type="number" min="0" placeholder="Qty">
+                    </div>
+                    <div class="item-card">
+                        <input type="checkbox" name="items" id="clips">
+                        <label for="clips">Paper Clips</label>
+                        <input type="number" min="0" placeholder="Qty">
+                    </div>
+                    <div class="item-card">
+                        <input type="checkbox" name="items" id="markers">
+                        <label for="markers">Markers</label>
+                        <input type="number" min="0" placeholder="Qty">
+                    </div>
+                    <div class="item-card">
+                        <input type="checkbox" name="items" id="sticky">
+                        <label for="sticky">Sticky Notes</label>
+                        <input type="number" min="0" placeholder="Qty">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Information -->
+            <div class="form-section">
+                <h2 class="section-title">Additional Information</h2>
+                <div class="form-group full-width">
+                    <label>Purpose/Justification<span class="required">*</span></label>
+                    <textarea name="purpose" rows="4" required></textarea>
+                </div>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Required By Date<span class="required">*</span></label>
+                        <input type="date" name="requiredDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Priority Level</label>
+                        <select name="priority">
+                            <option value="normal">Normal</option>
+                            <option value="urgent">Urgent</option>
+                            <option value="critical">Critical</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="buttons-container">
+                <button type="submit" class="btn btn-primary">Submit Request</button>
+                <button type="reset" class="btn btn-secondary">Clear Form</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
